@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import Caret from '../components/Caret.vue'
 
 const props = withDefaults(defineProps<{
   label?: string
   disabled?: boolean
   mode?: 'auto' | 'primary' | 'dark' | 'light' | 'light-outline'
   size?: 'auto' | 'large' | 'small',
-  rounded?: boolean
+  rounded?: boolean,
+  as?: 'a' | 'button',
+  href?: string
 }>(), {
     mode: 'auto',
     size: 'auto',
@@ -39,11 +42,11 @@ const classes = computed(() => {
 </script>
 
 <template>
-    <button class="button" :class="classes" :disabled="disabled" @click="handleClick">
-      <span class="button-icon">i</span>
-      <span class="button-label"> {{ label }} </span>
-      <span class="button-icon">i</span>
-    </button>
+    <component :is="as ?? 'button'" class="button" :class="classes" :disabled="disabled" :href="href" @click="handleClick">
+      {{ label }}
+      <Caret/>
+      
+    </component>
 </template>
 
 <style scoped>
@@ -256,5 +259,4 @@ const classes = computed(() => {
       --button-disabled-color: var(--palette-black-80);
     }
   }
-
 </style>
