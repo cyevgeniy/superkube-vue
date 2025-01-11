@@ -1,0 +1,236 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+
+const props = withDefaults(defineProps<{
+  label?: string
+  disabled?: boolean
+  mode?: 'primary'
+}>(), {
+    mode: 'fjklsdjf',
+})
+
+const classes = computed(() => {
+    return {
+        disabled: !!props.disabled,
+        'button-primary': props.mode === 'primary',   
+    }
+})
+
+</script>
+
+<template>
+    <button class="button button-dark" :class="classes"> {{ label }} </button>
+</template>
+
+<style scoped>
+.button {
+    --button-background-color: transparent;
+    --button-border-color: var(--palette-black-20);
+    --button-color: var(--palette-neutral-darker);
+    --button-hover-background-color: var(--palette-black-5);
+    --button-hover-border-color: var(--palette-black-20);
+    --button-hover-color: var(--palette-black);
+    --button-disabled-background-color: transparent;
+    --button-disabled-border-color: var(--palette-black-20);
+    --button-disabled-color: var(--palette-black-80);
+    --button-font-size: var(--type-scale-15);
+    --button-font-weight: var(--font-weight-semibold);
+    --button-border-radius: var(--radius-base);
+    --button-line-height: 1;
+    --button-letter-spacing: 0;
+    --button-text-transform: none;
+    --button-padding-y: 0;
+    --button-padding-x: 23px;
+    --button-border-width: 1px;
+    --button-border-style: solid;
+    --button-opacity: 1;
+    --button-box-shadow: none;
+    --button-height: 42px;
+    -webkit-appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: baseline;
+    text-align: center;
+    font-family: inherit;
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration: none;
+    height: var(--button-height);
+    font-weight: var(--button-font-weight);
+    font-size: var(--button-font-size);
+    line-height: var(--button-line-height);
+    letter-spacing: var(--button-letter-spacing);
+    text-transform: var(--button-text-transform);
+    border-radius: var(--button-border-radius);
+    padding-top: calc(var(--button-padding-y) * 1px + 1px);
+    padding-bottom: var(--button-padding-y);
+    padding-left: var(--button-padding-x);
+    padding-right: var(--button-padding-x);
+    border-width: var(--button-border-width);
+    border-style: var(--button-border-style);
+    box-shadow: var(--button-box-shadow);
+    opacity: var(--button-opacity);
+    color: var(--button-color);
+    border-color: var(--button-border-color);
+    background-color: var(--button-background-color);
+    background-image: var(--button-background-image);
+  }
+  .button:hover {
+    outline: none;
+  }
+  .button:hover, .button:focus {
+    background-image: none;
+    text-decoration: none;
+    color: var(--button-hover-color);
+    border-color: var(--button-hover-border-color);
+    background-color: var(--button-hover-background-color);
+    background-image: var(--button-hover-background-image);
+    box-shadow: var(--button-hover-box-shadow);
+  }
+  .button.disabled, .button:disabled {
+    --button-opacity: 0.5;
+    cursor: default;
+    color: var(--button-disabled-color);
+    border-color: var(--button-disabled-border-color);
+    background-color: var(--button-disabled-background-color);
+    background-image: var(--button-disabled-background-image);
+    box-shadow: var(--button-disabled-box-shadow);
+  }
+  .button .button-icon + .button-label {
+    margin-left: 6px;
+  }
+  .button .button-label + .button-icon {
+    margin-left: 6px;
+    margin-right: -3px;
+  }
+  .button .caret {
+    --caret-thickness: 2px;
+    margin-left: 4px;
+    margin-right: -4px;
+  }
+  
+  .button-primary {
+    --button-background-color: var(--palette-primary-base);
+    --button-border-color: transparent;
+    --button-color: var(--palette-primary-lightest);
+    --button-hover-background-color: var(--palette-primary-dark);
+    --button-hover-border-color: transparent;
+    --button-hover-color: var(--palette-primary-lightest);
+    --button-disabled-background-color: var(--palette-black-70);
+    --button-disabled-border-color: transparent;
+    --button-disabled-color: var(--palette-white-70);
+  }
+  
+  .button-dark {
+    --button-background-color: var(--palette-black);
+    --button-border-color: transparent;
+    --button-color: var(--palette-neutral-lightest);
+    --button-hover-background-color: var(--palette-neutral-darker);
+    --button-hover-border-color: transparent;
+    --button-hover-color: var(--palette-neutral-lightest);
+    --button-disabled-background-color: var(--palette-black-70);
+    --button-disabled-border-color: transparent;
+    --button-disabled-color: var(--palette-white-70);
+  }
+  
+  .button-light {
+    --button-background-color: var(--palette-white-95);
+    --button-border-color: transparent;
+    --button-color: var(--palette-black);
+    --button-hover-background-color: var(--palette-white-80);
+    --button-hover-border-color: transparent;
+    --button-hover-color: var(--palette-black);
+    --button-disabled-background-color: var(--palette-white-95);
+    --button-disabled-border-color: transparent;
+    --button-disabled-color: var(--palette-black-80);
+  }
+  
+  .button-light-outline {
+    --button-background-color: transparent;
+    --button-border-color: var(--palette-white-60);
+    --button-color: var(--palette-white-90);
+    --button-hover-background-color: var(--palette-white-7);
+    --button-hover-border-color: var(--palette-white-80);
+    --button-hover-color: var(--palette-white);
+    --button-disabled-background-color: var(--palette-white-95);
+    --button-disabled-border-color: transparent;
+    --button-disabled-color: var(--palette-black-80);
+  }
+  
+  .button-large {
+    --button-font-size: var(--type-scale-16);
+    --button-height: 52px;
+    --button-padding-x: 29px;
+  }
+  
+  .button-small {
+    --button-font-size: var(--type-scale-14);
+    --button-height: 32px;
+    --button-padding-x: 14px;
+    padding-top: 0;
+  }
+  
+  .button-round {
+    --button-border-radius: 99px;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .button {
+      --button-background-color: transparent;
+      --button-border-color: var(--palette-white-40);
+      --button-color: var(--palette-white-80);
+      --button-hover-background-color: var(--palette-white-7);
+      --button-hover-border-color: var(--palette-white-60);
+      --button-hover-color: var(--palette-white);
+      --button-disabled-background-color: var(--palette-white-70);
+      --button-disabled-border-color: transparent;
+      --button-disabled-color: var(--palette-black-80);
+    }
+    .button-primary {
+      --button-background-color: var(--palette-primary-base);
+      --button-border-color: transparent;
+      --button-color: var(--palette-primary-lighter);
+      --button-hover-background-color: var(--palette-primary-mid);
+      --button-hover-border-color: transparent;
+      --button-hover-color: var(--palette-primary-lightest);
+      --button-disabled-background-color: var(--palette-white-70);
+      --button-disabled-border-color: transparent;
+      --button-disabled-color: var(--palette-black-80);
+    }
+    .button-dark {
+      --button-background-color: var(--palette-white-90);
+      --button-border-color: transparent;
+      --button-color: var(--palette-black);
+      --button-hover-background-color: var(--palette-white);
+      --button-hover-border-color: transparent;
+      --button-hover-color: var(--palette-black);
+      --button-disabled-background-color: var(--palette-white-70);
+      --button-disabled-border-color: transparent;
+      --button-disabled-color: var(--palette-black-80);
+    }
+    .button-light {
+      --button-background-color: var(--palette-white-90);
+      --button-border-color: transparent;
+      --button-color: var(--palette-black);
+      --button-hover-background-color: var(--palette-white);
+      --button-hover-border-color: transparent;
+      --button-hover-color: var(--palette-black);
+      --button-disabled-background-color: var(--palette-white-70);
+      --button-disabled-border-color: transparent;
+      --button-disabled-color: var(--palette-black-80);
+    }
+    .button-light-outline {
+      --button-background-color: transparent;
+      --button-border-color: var(--palette-white-60);
+      --button-color: var(--palette-white-80);
+      --button-hover-background-color: var(--palette-white-7);
+      --button-hover-border-color: var(--palette-white-80);
+      --button-hover-color: var(--palette-white);
+      --button-disabled-background-color: var(--palette-white-70);
+      --button-disabled-border-color: transparent;
+      --button-disabled-color: var(--palette-black-80);
+    }
+  }
+
+</style>
