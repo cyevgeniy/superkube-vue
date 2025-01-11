@@ -4,22 +4,46 @@ import { computed } from 'vue'
 const props = withDefaults(defineProps<{
   label?: string
   disabled?: boolean
-  mode?: 'primary'
+  mode?: 'auto' | 'primary' | 'dark' | 'light' | 'light-outline'
+  size?: 'auto' | 'large' | 'small',
+  rounded?: boolean
 }>(), {
-    mode: 'fjklsdjf',
+    mode: 'auto',
+    size: 'auto',
 })
 
+const emit = defineEmits<{
+  (evt: 'click'): void
+}>()
+
+function handleClick() {
+  if (!props.disabled)
+    emit('click')
+}
+
+// TODO: use 'button.small', 'button.dark' css selectors, and thus
+// classes will be assigned like '{ props.mode, ... }'
 const classes = computed(() => {
     return {
         disabled: !!props.disabled,
-        'button-primary': props.mode === 'primary',   
+        'button-primary': props.mode === 'primary',  
+        'button-dark': props.mode === 'dark',  
+        'button-light': props.mode === 'light', 
+        'button-light-outline': props.mode === 'light-outline',
+        'button-round': !!props.rounded,
+        'button-small': props.size === 'small',
+        'button-large': props.size === 'large',
     }
 })
 
 </script>
 
 <template>
-    <button class="button button-dark" :class="classes"> {{ label }} </button>
+    <button class="button" :class="classes" :disabled="disabled" @click="handleClick">
+      <span class="button-icon">i</span>
+      <span class="button-label"> {{ label }} </span>
+      <span class="button-icon">i</span>
+    </button>
 </template>
 
 <style scoped>
