@@ -1,15 +1,19 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, type Component } from 'vue'
 import Caret from '../components/Caret.vue'
+import type { CaretDirection } from '../components/Caret.vue'
 
 const props = withDefaults(defineProps<{
   label?: string
   disabled?: boolean
   mode?: 'auto' | 'primary' | 'dark' | 'light' | 'light-outline'
-  size?: 'auto' | 'large' | 'small',
-  rounded?: boolean,
-  as?: 'a' | 'button',
+  size?: 'auto' | 'large' | 'small'
+  rounded?: boolean
+  as?: 'a' | 'button'
   href?: string
+  leftIcon?: Component
+  rightIcon?: Component
+  caretDirection?: CaretDirection | undefined
 }>(), {
     mode: 'auto',
     size: 'auto',
@@ -43,9 +47,18 @@ const classes = computed(() => {
 
 <template>
     <component :is="as ?? 'button'" class="button" :class="classes" :disabled="disabled" :href="href" @click="handleClick">
-      {{ label }}
-      <Caret/>
-      
+      <template v-if="$slots.leftIcon">
+        <span class="button-icon">
+          <slot name="leftIcon" />
+        </span>
+      </template>
+      <span class="button-label">{{ label }}</span>
+      <template v-if="$slots.rightIcon">
+        <span class="button-icon">
+          <slot name="rightIcon" />
+        </span>
+      </template>
+      <Caret v-if="caretDirection" :direction="caretDirection" />
     </component>
 </template>
 

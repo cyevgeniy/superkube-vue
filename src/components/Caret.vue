@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+export type CaretDirection = 'left' | 'up' | 'down' | 'right'
+
 const props = withDefaults(defineProps<{
-  direction?: 'left' | 'up' | 'down' | 'right'
+  direction?: CaretDirection
   size?: 'auto' | 'large' | 'huge'
   strong?: boolean
 }>(), {
