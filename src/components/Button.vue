@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, type Component } from 'vue'
+import { computed } from 'vue'
 import Caret from '../components/Caret.vue'
 import type { CaretDirection } from '../components/Caret.vue'
 
@@ -11,8 +11,6 @@ const props = withDefaults(defineProps<{
   rounded?: boolean
   as?: 'a' | 'button'
   href?: string
-  leftIcon?: Component
-  rightIcon?: Component
   caretDirection?: CaretDirection | undefined
   loading?: boolean
 }>(), {
@@ -29,8 +27,6 @@ function handleClick() {
     emit('click')
 }
 
-// TODO: use 'button.small', 'button.dark' css selectors, and thus
-// classes will be assigned like '{ props.mode, ... }'
 const classes = computed(() => [
   {
     disabled: !!props.disabled,
