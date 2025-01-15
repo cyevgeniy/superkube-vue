@@ -44,7 +44,7 @@ const classes = computed(() => [
 </script>
 
 <template>
-    <component :is="as ?? 'button'" class="button" :class="classes" :disabled="disabled" :href="href" @click="handleClick">
+    <component :is="as ?? 'button'" class="button" :class="classes" :disabled="disabled" :href="href" @click="handleClick" data-testid="button">
       <span class="content">  
         <template v-if="$slots.leftIcon">
           <span class="button-icon">
