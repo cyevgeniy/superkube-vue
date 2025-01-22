@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<KBaseInputProps>(), {
 
 const hintText = computed(() => props.required ? '*' : props.hint)
 const showTopHint = computed(() => props.required || (hintText.value && props.hintPosition === 'top'))
-const showBottomHint = computed(() => hintText.value && props.hintPosition === 'bottom')
+const showBottomHint = computed(() => !props.required && (hintText.value && props.hintPosition === 'bottom'))
 
 const hintClasses = computed(() => [
     props.state || 'neutral',
