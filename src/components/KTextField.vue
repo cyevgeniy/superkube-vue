@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import Button from './Button.vue'
 
 
 export type KTextFieldState = 'error' | 'success'
@@ -37,16 +38,20 @@ const classes = computed(() => [
   props.light && 'light',
   props.rounded && 'round'
 ])
-
-const labelClasses = computed(() => {
-
-})
 </script>
 
 <template>
   <div class="kTextField">
     <label v-if="label"> {{ label }} </label>
-    <input v-model="value" class="input" :class="classes" type="text" :disabled="disabled" :placeholder="placeholder" />
+    <div class="input-group">
+      <span v-if="$slots.prependAddon" class="input-addon">
+        <slot name="prependAddon" />
+      </span>
+      <input v-model="value" class="input" :class="classes" type="text" :disabled="disabled" :placeholder="placeholder" />
+      <span v-if="$slots.appendAddon" class="input-addon">
+        <slot name="appendAddon" />
+      </span>
+    </div>
   </div>
 </template>
 
@@ -309,5 +314,4 @@ const labelClasses = computed(() => {
 .kTextField:has(> .input.round) label {
   margin-left: 16px;
 }
-
 </style>
