@@ -19,9 +19,8 @@ const props = withDefaults(defineProps<KBaseInputProps>(), {
     hintPosition: 'bottom'
 })
 
-const hintText = computed(() => props.required ? '*' : props.hint)
-const showTopHint = computed(() => props.required || (hintText.value && props.hintPosition === 'top'))
-const showBottomHint = computed(() => !props.required && (hintText.value && props.hintPosition === 'bottom'))
+const showTopHint = computed(() => props.hint && props.hintPosition === 'top')
+const showBottomHint = computed(() => props.hint && props.hintPosition === 'bottom')
 
 const hintClasses = computed(() => [
     props.state || 'neutral',
@@ -35,8 +34,9 @@ const hintClasses = computed(() => [
     <div data-testid="baseInput">
         <label v-if="label" data-testid="inputLabel">
             {{ label }}
+            <span class="hint req" data-testid="reqHint">*</span>
             <span v-if="showTopHint" class="hint" :class="hintClasses" data-testid="topHint">
-                {{ hintText }}
+                {{ hint }}
             </span>
         </label>
         <div class="input-group">
@@ -50,7 +50,7 @@ const hintClasses = computed(() => [
                 <slot name="appendAddon" />
             </span>
         </div>
-        <div v-if="showBottomHint" class="hint" :class="hintClasses" data-testid="bottomHint"> {{ hintText }} </div>
+        <div v-if="showBottomHint" class="hint" :class="hintClasses" data-testid="bottomHint"> {{ hint }} </div>
     </div>
 </template>
 
@@ -92,6 +92,11 @@ label .hint {
     text-transform: none;
     font-weight: normal;
     letter-spacing: 0;
+}
+
+/** Add a gap between required hint and an ordinary hint with position='top' */
+label .hint + .hint {
+    margin-left: 4px;
 }
 
 div.hint {
