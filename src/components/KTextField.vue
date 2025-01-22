@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import Button from './Button.vue'
+import KBaseInput from './KBaseInput.vue'
+import type { State, HintPosition } from './KBaseInput.vue'
 
-
-export type KTextFieldState = 'error' | 'success'
+export type KTextFieldState = State
 export type KTextFieldSize = 'small' | 'regular' | 'large'
 
 export interface KTextFieldProps {
@@ -15,6 +15,9 @@ export interface KTextFieldProps {
   size?: KTextFieldSize
   light?: boolean
   placeholder?: string
+  hint?: string
+  hintPosition?: HintPosition
+  required?: boolean
 }
 
 const props = defineProps<KTextFieldProps>()
@@ -41,18 +44,16 @@ const classes = computed(() => [
 </script>
 
 <template>
-  <div class="kTextField">
-    <label v-if="label"> {{ label }} </label>
-    <div class="input-group">
-      <span v-if="$slots.prependAddon" class="input-addon">
-        <slot name="prependAddon" />
-      </span>
-      <input v-model="value" class="input" :class="classes" type="text" :disabled="disabled" :placeholder="placeholder" />
-      <span v-if="$slots.appendAddon" class="input-addon">
-        <slot name="appendAddon" />
-      </span>
-    </div>
-  </div>
+  <KBaseInput :label="label" :light="props.light" :state="state" :hint-position="hintPosition" :hint="hint" :required="required">
+   <template v-if="$slots.prependAddon" #prependAddon>
+    <slot name="prependAddon" />
+   </template>
+    <input v-model="value" class="input" :class="classes" type="text" :disabled="disabled" :placeholder="placeholder" data-testid="textInput" />
+
+    <template v-if="$slots.appendAddon" #appendAddon>
+    <slot name="appendAddon" />
+   </template>
+  </KBaseInput>
 </template>
 
 <style scoped>
@@ -77,7 +78,6 @@ const classes = computed(() => [
   --input-outline-style: solid;
   --input-box-shadow: none;
   --input-height: 42px;
-  --input-select-toggle: url('data:image/svg+xml;utf8,<svg height="6" viewBox="0 0 10 6" width="10" xmlns="http://www.w3.org/2000/svg"><path fill="rgb(0,0,0)" opacity=".6" d="m6.6168815 3-4.44908109-4.09883609c-.22373388-.20615371-.22373388-.54039492 0-.74654863s.58647818-.20615371.81021206 0l4.85418712 4.47211041c.22373388.20615371.22373388.54039491 0 .74654862l-4.85418712 4.47211041c-.22373388.20615371-.58647818.20615371-.81021206 0s-.22373388-.54039492 0-.74654863z" fill-rule="evenodd" transform="matrix(0 1 -1 0 8 -2)"/></svg>');
   display: block;
   width: 100%;
   font-family: inherit;
@@ -183,10 +183,6 @@ const classes = computed(() => [
 }
 
 @media (prefers-color-scheme: dark) {
-  select.input {
-    --input-select-toggle: url('data:image/svg+xml;utf8,<svg height="6" viewBox="0 0 10 6" width="10" xmlns="http://www.w3.org/2000/svg"><path fill="rgb(255,255,255)" opacity=".7" d="m6.6168815 3-4.44908109-4.09883609c-.22373388-.20615371-.22373388-.54039492 0-.74654863s.58647818-.20615371.81021206 0l4.85418712 4.47211041c.22373388.20615371.22373388.54039491 0 .74654862l-4.85418712 4.47211041c-.22373388.20615371-.58647818.20615371-.81021206 0s-.22373388-.54039492 0-.74654863z" fill-rule="evenodd" transform="matrix(0 1 -1 0 8 -2)"/></svg>');
-  }
-
   .input {
     --input-color: var(--palette-white-90);
     --input-border-color: var(--palette-white-30);
@@ -257,58 +253,6 @@ const classes = computed(() => [
     --input-focus-background-color: var(--palette-white-20);
     --input-focus-box-shadow: none;
   }
-}
-
-.input-addon {
-  --input-addon-color: var(--palette-black-60);
-  --input-addon-background-color: var(--palette-black-5);
-  --input-addon-border-color: var(--palette-black-10);
-  --input-addon-font-size: 14px;
-  --input-addon-padding: 0 0.85em;
-  --input-addon-border-radius: var(--radius-small);
-  --input-addon-border-width: 1px;
-  --input-addon-border-style: solid;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  text-align: center;
-  font-size: var(--input-addon-font-size);
-  padding: var(--input-addon-padding);
-  border-radius: var(--input-addon-border-radius);
-  color: var(--input-addon-color);
-  background-color: var(--input-addon-background-color);
-  border-width: var(--input-addon-border-width);
-  border-style: var(--input-addon-border-style);
-  border-color: var(--input-addon-border-color);
-}
-
-@media (prefers-color-scheme: dark) {
-  .input-addon {
-    --input-addon-color: var(--palette-white-60);
-    --input-addon-background-color: var(--palette-white-10);
-    --input-addon-border-color: transparent;
-  }
-}
-
-.input-group {
-  display: flex;
-}
-
-.input-group .input {
-  flex: 1;
-  margin-left: -1px;
-  margin-right: -1px;
-}
-
-.input-group> :not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.input-group> :not(:first-child) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
 }
 
 .kTextField:has(> .input.round) label {
