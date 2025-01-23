@@ -24,6 +24,8 @@ const props = defineProps<KTextFieldProps>()
 
 const emit = defineEmits<{
   (evt: 'update:modelValue', v: string): void
+  (evt: 'blur', v: FocusEvent): void
+  (evt: 'focus', v: FocusEvent): void
 }>()
 
 const value = computed({
@@ -41,18 +43,29 @@ const classes = computed(() => [
   props.light && 'light',
   props.rounded && 'round'
 ])
+
+function onBlur(e: FocusEvent) {
+  emit('blur', e)
+}
+
+function onFocus(e: FocusEvent) {
+  emit('focus', e)
+}
 </script>
 
 <template>
-  <KBaseInput :label="label" :light="props.light" :state="state" :hint-position="hintPosition" :hint="hint" :required="required">
-   <template v-if="$slots.prependAddon" #prependAddon>
-    <slot name="prependAddon" />
-   </template>
-    <input v-model="value" class="input" :class="classes" type="text" :disabled="disabled" :placeholder="placeholder" data-testid="textInput" />
-
+  <KBaseInput :label="label" :light="props.light" :state="state" :hint-position="hintPosition" :hint="hint"
+    :required="required">
+    <template v-if="$slots.prependAddon" #prependAddon>
+      <slot name="prependAddon" />
+    </template>
+    <slot name="prependButton" />
+    <input v-model="value" class="input" :class="classes" type="text" :disabled="disabled" :placeholder="placeholder"
+      data-testid="textInput" @blur="onBlur" @focus="onFocus" />
+    <slot name="appendButton" />
     <template v-if="$slots.appendAddon" #appendAddon>
-    <slot name="appendAddon" />
-   </template>
+      <slot name="appendAddon" />
+    </template>
   </KBaseInput>
 </template>
 

@@ -25,7 +25,6 @@ const showBottomHint = computed(() => props.hint && props.hintPosition === 'bott
 const hintClasses = computed(() => [
     props.state || 'neutral',
     props.light && 'light',
-    props.required && 'req',
 ])
 
 </script>
@@ -34,7 +33,7 @@ const hintClasses = computed(() => [
     <div data-testid="baseInput">
         <label v-if="label" data-testid="inputLabel">
             {{ label }}
-            <span class="hint req" data-testid="reqHint">*</span>
+            <span v-if="props.required" class="hint req" data-testid="reqHint">*</span>
             <span v-if="showTopHint" class="hint" :class="hintClasses" data-testid="topHint">
                 {{ hint }}
             </span>
