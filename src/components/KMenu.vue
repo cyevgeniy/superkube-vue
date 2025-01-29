@@ -9,6 +9,7 @@ export interface MenuItem {
     label?: KLabelProps
 }
 export interface KMenuProps {
+    modelValue?: MenuItem | null
     items?: MenuItem[]
     mode?: 'muted' | 'primary' | 'light'
     weight?: 'normal' | 'semibold' | 'strong'
@@ -22,6 +23,15 @@ export interface KMenuProps {
 
 const props = defineProps<KMenuProps>()
 
+const emit = defineEmits<{
+  (evt: 'click', item: MenuItem): void
+  (evt: 'update:modelValue', v: MenuItem): void
+}>()
+
+const _value = computed(() => {
+  return props.modelValue
+})
+
 const classes = computed(() => [
   props.mode ?? '',
   props.weight,
@@ -34,19 +44,36 @@ const classes = computed(() => [
     pills: props.pills,
   }
 ])
+
+function itemClasses(item: MenuItem) {
+  return {
+    active: isActive(item),
+  }
+}
+
+function handleItemClick(item: MenuItem) {
+  emit('click', item)
+
+  if (_value.value !== undefined)
+    emit('update:modelValue', item)
+}
+
+function isActive(item: MenuItem) {
+  return _value.value ? _value.value.text === item.text : false
+}
 </script>
 
 <template>
   <nav class="menu" :class="classes">
     <ul class="menu-list">
-        <li v-for="item in items" class="menu-item">
+        <li v-for="item in items" :key="item.text" class="menu-item" :class="itemClasses(item)">
             <template v-if="!item.label">
-                <a href="#" class="menu-link">{{ item.text}}</a>
+                <span class="menu-link" @click="handleItemClick(item)">{{ item.text}} </span>
                 <p v-if="item.note">{{ item.note }}</p>
             </template>
             <template v-else>
             <div class="menu-link-box">
-                <a href="#" class="menu-link flex-none">{{ item.text}}</a>
+                <span class="menu-link flex-none">{{ item.text }}</span>
                 <KLabel v-bind="item.label" style="margin-left: 10px;" />
             </div>
             </template>
