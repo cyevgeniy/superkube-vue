@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import KLabel from './KLabel.vue'
+import KWrapper from './KWrapper.vue'
 import type { KLabelProps } from './KLabel.vue'
 
 export interface MenuItem {
@@ -63,21 +64,30 @@ function isActive(item: MenuItem) {
   return _value.value ? _value.value.text === item.text : false
 }
 </script>
-
 <template>
   <nav class="menu" :class="classes" data-testid="menu">
     <ul class="menu-list">
       <li v-for="item in items" :key="item.text" class="menu-item" :class="itemClasses(item)">
-        <template v-if="!item.label">
-          <span class="menu-link" @click="handleItemClick(item)" data-testid="menu-link">{{ item.text }} </span>
-          <p v-if="item.note" data-testid="menu-note">{{ item.note }}</p>
-        </template>
-        <template v-else>
-          <div class="menu-link-box">
-            <span class="menu-link flex-none" @click="handleItemClick(item)" data-testid="menu-link">{{ item.text }}</span>
-            <KLabel v-bind="item.label" style="margin-left: 10px;" />
-          </div>
-        </template>
+        <KWrapper :is="item.label ? 'div' : undefined" class="menu-link-box">
+            <span
+              class="menu-link"
+              :class="{'flex-none': item.label}"
+              @click="handleItemClick(item)"
+              data-testid="menu-link">{{ item.text }}
+            </span>
+            <KLabel v-if="item.label" v-bind="item.label" style="margin-left: 10px;" />
+            <p v-if="item.note" data-testid="menu-note">{{ item.note }}</p>
+        </KWrapper>
+        <!-- <template v-if="!item.label"> -->
+        <!--   <span class="menu-link" @click="handleItemClick(item)" data-testid="menu-link">{{ item.text }} </span> -->
+        <!--   <p v-if="item.note" data-testid="menu-note">{{ item.note }}</p> -->
+        <!-- </template> -->
+        <!-- <template v-else> -->
+        <!--   <div class="menu-link-box"> -->
+        <!--     <span class="menu-link flex-none" @click="handleItemClick(item)" data-testid="menu-link">{{ item.text }}</span> -->
+        <!--     <KLabel v-bind="item.label" style="margin-left: 10px;" /> -->
+        <!--   </div> -->
+        <!-- </template> -->
       </li>
     </ul>
   </nav>
