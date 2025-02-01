@@ -3,13 +3,20 @@ import { computed } from 'vue'
 import KLabel from './KLabel.vue'
 import KWrapper from './KWrapper.vue'
 import type { KLabelProps } from './KLabel.vue'
+import type { KTextProps } from './KText.vue'
+import KText from './KText.vue'
+
+export interface MenuText extends KTextProps {
+  text: string
+}
 
 export interface MenuItem {
   text: string
-  note?: string
+  note?: MenuText
   label?: KLabelProps
   meta?: any
 }
+
 export interface KMenuProps {
   modelValue?: MenuItem | null
   items?: MenuItem[]
@@ -67,27 +74,19 @@ function isActive(item: MenuItem) {
 <template>
   <nav class="menu" :class="classes" data-testid="menu">
     <ul class="menu-list">
-      <li v-for="item in items" :key="item.text" class="menu-item" :class="itemClasses(item)">
+      <li v-for="item in items" :key="item.text" class="menu-item" data-testid="menu-item" :class="itemClasses(item)">
         <KWrapper :is="item.label ? 'div' : undefined" class="menu-link-box">
             <span
               class="menu-link"
               :class="{'flex-none': item.label}"
               @click="handleItemClick(item)"
-              data-testid="menu-link">{{ item.text }}
+              data-testid="menu-link"
+            >
+              {{ item.text }}
             </span>
             <KLabel v-if="item.label" v-bind="item.label" style="margin-left: 10px;" />
-            <p v-if="item.note" data-testid="menu-note">{{ item.note }}</p>
+            <KText v-if="item.note" data-testid="menu-note" v-bind="item.note"> {{ item.note.text }} </KText>
         </KWrapper>
-        <!-- <template v-if="!item.label"> -->
-        <!--   <span class="menu-link" @click="handleItemClick(item)" data-testid="menu-link">{{ item.text }} </span> -->
-        <!--   <p v-if="item.note" data-testid="menu-note">{{ item.note }}</p> -->
-        <!-- </template> -->
-        <!-- <template v-else> -->
-        <!--   <div class="menu-link-box"> -->
-        <!--     <span class="menu-link flex-none" @click="handleItemClick(item)" data-testid="menu-link">{{ item.text }}</span> -->
-        <!--     <KLabel v-bind="item.label" style="margin-left: 10px;" /> -->
-        <!--   </div> -->
-        <!-- </template> -->
       </li>
     </ul>
   </nav>
@@ -195,7 +194,7 @@ function isActive(item: MenuItem) {
   --menu-link-active-font-weight: var(--font-weight-semibold);
 }
 
-.menu.semibold .caret {
+.menu.semibold ::deep(.caret) {
   --caret-thickness: 2px;
 }
 
@@ -204,7 +203,7 @@ function isActive(item: MenuItem) {
   --menu-link-active-font-weight: bold;
 }
 
-.menu.strong .caret {
+.menu.strong ::deep(.caret) {
   --caret-thickness: 2px;
 }
 

@@ -83,12 +83,12 @@ describe('KMenu component', () => {
             props: {
                 modelValue: item,
                 items: [
-                    item,    
+                    item,
                 ]
             }
         })
 
-        expect(wrapper.find('[data-testid="menu-link"] .active').exists()).toBe(true)
+        expect(wrapper.find('[data-testid="menu-item"].active').exists()).toBe(true)
 
     })
 
