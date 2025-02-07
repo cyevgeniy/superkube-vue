@@ -3,11 +3,13 @@ import { computed } from 'vue'
 
 export type CaretDirection = 'left' | 'up' | 'down' | 'right'
 
-const props = withDefaults(defineProps<{
+export interface CaretProps {
   direction?: CaretDirection
   size?: 'auto' | 'large' | 'huge'
   strong?: boolean
-}>(), {
+}
+
+const props = withDefaults(defineProps<CaretProps>(), {
     direction: 'right',
     size: 'auto',
 })
