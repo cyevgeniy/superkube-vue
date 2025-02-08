@@ -55,7 +55,7 @@ describe('KSelect', () => {
   it('renders empty option when allowEmpty is true', () => {
     const wrapper = createWrapper({
       allowEmpty: true,
-      emptyLabel: 'Select an option'
+      placeholder: 'Select an option'
     })
     const options = wrapper.findAll('option')
     expect(options).toHaveLength(4)

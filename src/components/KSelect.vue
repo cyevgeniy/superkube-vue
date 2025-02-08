@@ -23,8 +23,6 @@ export interface KSelectProps {
   hintPosition?: HintPosition
   required?: boolean
   allowEmpty?: boolean
-  emptyLabel?: string
-  multiple?: boolean
 }
 
 const props = withDefaults(defineProps<KSelectProps>(), {
@@ -69,8 +67,6 @@ function isSelected(option: KSelectOption) {
       class="input" 
       :class="classes" 
       :disabled="disabled" 
-      :placeholder="placeholder"
-      :multiple="multiple"
       data-testid="selectInput" 
       @change="onChange"
     >
@@ -88,7 +84,7 @@ function isSelected(option: KSelectOption) {
         :value="null"
         :selected="value === null"
       >
-        {{ emptyLabel }}
+        {{ placeholder }}
       </option>
     </select>
   </KBaseInput>
@@ -228,12 +224,6 @@ select.input {
   background-repeat: no-repeat;
   background-position: right 0.65em center;
   padding-right: 28px !important;
-}
-
-select[multiple].input {
-  --input-height: auto !important;
-  background-image: none !important;
-  padding: var(--input-padding) !important;
 }
 
 
