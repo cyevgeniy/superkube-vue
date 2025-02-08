@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import KBaseInput from './KBaseInput.vue'
-import type { State, HintPosition } from './KBaseInput.vue'
+import type { State, HintPosition, KInputSize } from './KBaseInput.vue'
 
 export type KTextFieldState = State
-export type KTextFieldSize = 'small' | 'regular' | 'large'
 
 export interface KTextFieldProps {
   modelValue: string | null
@@ -12,7 +11,7 @@ export interface KTextFieldProps {
   disabled?: boolean
   state?: KTextFieldState
   rounded?: boolean
-  size?: KTextFieldSize
+  size?: KInputSize
   light?: boolean
   placeholder?: string
   hint?: string

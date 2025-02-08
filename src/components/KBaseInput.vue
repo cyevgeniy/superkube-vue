@@ -14,6 +14,7 @@ export interface KBaseInputProps {
 
 export type State = 'neutral' | 'success' | 'error'
 export type HintPosition = 'top' | 'bottom'
+export type KInputSize = 'small' | 'regular' | 'large'
 
 const props = withDefaults(defineProps<KBaseInputProps>(), {
     hintPosition: 'bottom'

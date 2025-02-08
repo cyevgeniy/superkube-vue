@@ -20,3 +20,6 @@ devpod:
 ssh:
 	ssh superkube-vue.devpod
 
+docs-dev:
+	cd docs &&npm run dev
+
