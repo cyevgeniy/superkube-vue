@@ -357,4 +357,28 @@ function isActive(item: MenuItem) {
     --menu-link-active-color: var(--palette-white-50);
   }
 }
+
+a {
+    color: var(--link-default-color);
+  }
+  
+  a:hover {
+    transition: all 0.1s linear;
+    color: var(--link-default-hover-color);
+  }
+
+  nav ul,
+  nav ol {
+    margin-left: 0;
+    list-style: none;
+  }
+
+  ul,
+  ol {
+    margin-left: 20px;
+  }
+  
+  li li {
+    font-size: 1em;
+  }
 </style>
