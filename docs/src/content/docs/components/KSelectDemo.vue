@@ -1,4 +1,5 @@
 <script setup>
+import ComponentExample from './ComponentExample.vue';
 import KSelect from '../../../../../src/components/KSelect.vue';
 
 const options = [
@@ -8,5 +9,7 @@ const options = [
 </script>
 
 <template>
-  <KSelect :options="options" label="Choose a city" class="not-content" />
+  <ComponentExample>
+    <KSelect :options="options" label="Choose a city" class="not-content" />
+  </ComponentExample>
 </template>

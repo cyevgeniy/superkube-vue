@@ -3,15 +3,18 @@ title: KLabel
 description: A label
 ---
 
+import ComponentExample from './ComponentExample.vue';
 import KLabel from '../../../../../src/components/KLabel.vue';
 import '../../../../../src/palette.css';
 
 Renders a label.
 
-<KLabel label="New" mode="base" />
-<KLabel label="New" mode="base" with-close />
-<KLabel label="New" mode="dark" />
-<KLabel label="New" mode="light" />
+<ComponentExample flex>
+	<KLabel label="New" mode="base" />
+	<KLabel label="New" mode="base" with-close />
+	<KLabel label="New" mode="dark" />
+	<KLabel label="New" mode="light" />
+</ComponentExample>
 
 ```ts
 interface KLabelProps {
@@ -27,7 +30,6 @@ interface KLabelProps {
 
 ```vue
 <KLabel label="New" />
-
 ```
 
 ## Props
