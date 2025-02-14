@@ -5,6 +5,7 @@ import KWrapper from './KWrapper.vue'
 import type { KLabelProps } from './KLabel.vue'
 import type { KTextProps } from './KText.vue'
 import KText from './KText.vue'
+import KLink from './KLink.vue'
 
 export interface MenuText extends KTextProps {
   text: string
@@ -14,7 +15,7 @@ export interface MenuItem {
   text: string
   note?: MenuText
   label?: KLabelProps
-  meta?: any
+  href?: string
 }
 
 export interface KMenuProps {
@@ -76,14 +77,15 @@ function isActive(item: MenuItem) {
     <ul class="menu-list">
       <li v-for="item in items" :key="item.text" class="menu-item" data-testid="menu-item" :class="itemClasses(item)">
         <KWrapper :is="item.label ? 'div' : undefined" class="menu-link-box">
-            <span
+            <KLink
               class="menu-link"
               :class="{'flex-none': item.label}"
               @click="handleItemClick(item)"
+              :href="item.href"
               data-testid="menu-link"
             >
               {{ item.text }}
-            </span>
+            </KLink>
             <KLabel v-if="item.label" v-bind="item.label" style="margin-left: 10px;" />
             <KText v-if="item.note" data-testid="menu-note" v-bind="item.note"> {{ item.note.text }} </KText>
         </KWrapper>
