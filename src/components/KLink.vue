@@ -22,5 +22,7 @@ const href = computed(() => isExternal.value ? props.href : undefined)
 </script>
 
 <template>
-  <component :is="as" :to="to" :href="href" :target="target" />
+  <component :is="as" :to="to" :href="href" :target="target">
+    <slot />
+  </component>
 </template>
