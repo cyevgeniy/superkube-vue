@@ -23,3 +23,5 @@ ssh:
 docs-dev:
 	cd docs &&npm run dev
 
+docs-build:
+	cd docs && npm run build
