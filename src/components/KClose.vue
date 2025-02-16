@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
+export type KCloseSize =  'small' | 'medium' | 'base' | 'large' | 'huge'
+
 export interface KCloseProps {
-    size?: 'small' | 'medium' | 'base' | 'large' | 'huge'
+    size?: KCloseSize
     strong?: boolean
 }
 
