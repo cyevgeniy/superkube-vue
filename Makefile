@@ -21,7 +21,7 @@ ssh:
 	ssh superkube-vue.devpod
 
 docs-dev:
-	cd docs &&npm run dev
+	npx astro dev
 
 docs-build:
-	cd docs && npm run build
+	npx astro build
