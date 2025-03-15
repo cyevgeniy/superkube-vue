@@ -1,6 +1,6 @@
 ---
 title: KList
-description: A versatile list component supporting various styles and formats
+description: A list component for static items
 ---
 
 import ComponentExample from './ComponentExample.vue'
@@ -56,6 +56,7 @@ An array of items to display in the list. Items can be strings or objects.
 ### `labelField`
 
 When using objects as items, specifies which field to use as the display text.
+By default, the `labelField` is `'name'`.
 
 ```vue
 <KList 
