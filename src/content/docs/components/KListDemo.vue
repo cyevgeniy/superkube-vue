@@ -1,6 +1,6 @@
 <script setup>
 import ComponentExample from './ComponentExample.vue'
-import KList from '../../../../../src/components/KList.vue'
+import KList from '../../../components/KList.vue'
 
 const items = [
   { label: 'Tokyo', value: 'tokyo' },

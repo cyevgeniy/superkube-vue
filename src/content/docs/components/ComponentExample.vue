@@ -5,19 +5,16 @@ const props = defineProps({
   flex: {
     type: Boolean,
     required: false,
-  }
+  },
 })
 
-const classes = computed(() => props.flex ? 'flex' : undefined)
+const classes = computed(() => (props.flex ? 'flex' : undefined))
 </script>
 
-
 <template>
-
   <div class="example" :class="classes">
     <slot />
   </div>
-
 </template>
 
 <style scoped>

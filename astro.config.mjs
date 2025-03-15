@@ -7,12 +7,11 @@ import vue from '@astrojs/vue'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://cyevgeniy.github.io',
-  base: '/superkube-vue/docs',
   integrations: [
     starlight({
       title: 'Superkube Vue',
       social: {
-        github: 'https://github.com/withastro/starlight',
+        github: 'https://github.com/cyevgeniy/superkube-vue',
       },
       sidebar: [
         {

@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview",
-    "docs:build": "cd docs && npm ci &&npm run build"
+    "preview": "vite preview"
   },
   "simple-git-hooks": {
     "pre-commit": "./node_modules/.bin/nano-staged"
@@ -19,7 +18,9 @@
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
   },
-  "devDependencies": {
+  "devDependencies": { 
+    "@astrojs/starlight": "^0.32.2",
+    "@astrojs/vue": "^5.0.7",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
