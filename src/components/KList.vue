@@ -13,7 +13,9 @@ export interface KListProps {
   bordered?: boolean
   markType?: 'unstyled' | 'checkmark' | 'dashed' | 'numbered'
 }
-const props = defineProps<KListProps>()
+const props = withDefaults(defineProps<KListProps>(), {
+  labelField: 'name',
+})
 
 function getText(item: KListItem) {
   return typeof item === 'string' ? item : item[props.labelField]
@@ -32,8 +34,8 @@ const classes = computed(() => [
 </script>
 
 <template>
-  <ul class="list" :class="classes">
-    <li v-for="item in items" class="list-item">
+  <ul class="list" :class="classes" data-testid="list">
+    <li v-for="item in items" class="list-item" data-testid="list-item">
       {{ getText(item) }}
     </li>
   </ul>
