@@ -33,15 +33,10 @@ const value = computed({
   },
   set(v: string) {
     emit('update:modelValue', v)
-  }
+  },
 })
 
-const classes = computed(() => [
-  props.size,
-  props.state,
-  props.light && 'light',
-  props.rounded && 'round'
-])
+const classes = computed(() => [props.size, props.state, props.light && 'light', props.rounded && 'round'])
 
 function onBlur(e: FocusEvent) {
   emit('blur', e)
@@ -53,15 +48,31 @@ function onFocus(e: FocusEvent) {
 </script>
 
 <template>
-  <KBaseInput :label="label" :light="props.light" :state="state" :hint-position="hintPosition" :hint="hint"
-    :required="required">
+  <KBaseInput
+    :label="label"
+    :light="props.light"
+    :state="state"
+    :hint-position="hintPosition"
+    :hint="hint"
+    :required="required"
+  >
     <template v-if="$slots.prependAddon" #prependAddon>
       <slot name="prependAddon" />
     </template>
     <slot name="prependButton" />
-    <input v-model="value" class="input" :class="classes" type="text" :disabled="disabled" :placeholder="placeholder"
-      data-testid="textInput" @blur="onBlur" @focus="onFocus" />
-    <slot name="appendButton" />
+    <input
+      v-model="value"
+      class="input"
+      :class="classes"
+      type="text"
+      :disabled="disabled"
+      :placeholder="placeholder"
+      :required="required"
+      data-testid="textInput"
+      @blur="onBlur"
+      @focus="onFocus"
+    />
+    <slot name="appendButton"> </slot>
     <template v-if="$slots.appendAddon" #appendAddon>
       <slot name="appendAddon" />
     </template>
@@ -126,8 +137,8 @@ function onFocus(e: FocusEvent) {
   outline-offset: var(--input-outline-offset);
 }
 
-.input[type=radio],
-.input[type=checkbox] {
+.input[type='radio'],
+.input[type='checkbox'] {
   outline: 2px solid var(--input-outline-color);
 }
 
