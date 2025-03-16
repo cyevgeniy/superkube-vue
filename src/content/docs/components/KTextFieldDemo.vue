@@ -1,7 +1,7 @@
 <script setup>
 import ComponentExample from './ComponentExample.vue'
 import KTextField from '../../../components/KTextField.vue'
-import Button from '../../../components/Button.vue'
+import Button from '../../../components/KButton.vue'
 </script>
 
 <template>
