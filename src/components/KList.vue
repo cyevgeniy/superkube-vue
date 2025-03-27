@@ -4,7 +4,7 @@ import { computed } from 'vue'
 export type KListItem = Record<string, any> | string
 
 export interface KListProps {
-  items?: KListtem[]
+  items?: KListItem[]
   labelField?: string
   size?: 'default' | 'medium' | 'small'
   weight?: 'normal' | 'strong' | 'semibold'
