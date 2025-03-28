@@ -1,10 +1,5 @@
-# Vue 3 + TypeScript + Vite
+# Superkube-vue
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A Vue 3 component library based on Superkube CSS framework.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
-
-## Prettier via git hooks
-
-1. Add hooks via `npx simple-git-hooks`
-2. All files in a commit will be formatted with prettier
+[Documentation](https://cyevgeniy.github.io/superkube-vue/)
