@@ -19,6 +19,7 @@ export default defineConfig({
           { text: 'KBreadcrumb', link: '/KBreadcrumb' },
           { text: 'KDivider', link: '/KDivider' },
           { text: 'KLabel', link: '/KLabel' },
+          { text: 'KTextField', link: '/KTextField' },
         ],
       },
     ],
