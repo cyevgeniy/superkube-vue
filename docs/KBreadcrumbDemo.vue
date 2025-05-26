@@ -1,5 +1,5 @@
 <script setup>
-import KBreadcrumb from '../../../components/KBreadcrumb.vue'
+import KBreadcrumb from '../src/components/KBreadcrumb.vue'
 import ComponentExample from './ComponentExample.vue'
 </script>
 

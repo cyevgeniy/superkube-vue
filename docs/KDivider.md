@@ -3,7 +3,22 @@ title: KDivider
 description: A divider line
 ---
 
+<script setup>
+import KDivider from '../src/components/KDivider.vue'
+import ComponentExample from './ComponentExample.vue'
+</script>
+
+# KDivider
+
 A divider line.
+
+::: raw
+<ComponentExample flex column>
+  <KDivider color="primary" />
+  <KDivider color="primary" mode="dashed" />
+  <KDivider color="dark-mid" mode="dotted" />
+</ComponentExample>
+:::
 
 ```ts
 interface KDividerProps {
@@ -25,7 +40,7 @@ interface KDividerProps {
 
 ### `color`
 
-The color of the divider. Possible values are: 
+The color of the divider. Possible values are:
 
 - 'default'
 - 'dark-mid'

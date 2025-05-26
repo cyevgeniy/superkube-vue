@@ -3,18 +3,25 @@ title: KLabel
 description: A label
 ---
 
+<script setup>
 import ComponentExample from './ComponentExample.vue';
-import KLabel from '../../../components/KLabel.vue';
-import '../../../palette.css';
+import KLabel from '../src/components/KLabel.vue';
+import '../src/palette.css';
+</script>
+
+# KLabel
 
 Renders a label.
 
+::: raw
 <ComponentExample flex>
-	<KLabel label="New" mode="base" />
-	<KLabel label="New" mode="base" with-close />
-	<KLabel label="New" mode="dark" />
-	<KLabel label="New" mode="light" />
+	<KLabel label="Base" mode="base" />
+	<KLabel label="With close" mode="base" with-close />
+	<KLabel label="Dark" mode="dark" />
+	<KLabel label="Light" mode="light" />
+	<KLabel label="Link" href="https://example.com" />
 </ComponentExample>
+:::
 
 ```ts
 interface KLabelProps {

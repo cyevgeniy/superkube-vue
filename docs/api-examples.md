@@ -22,7 +22,7 @@ const items = [
 ::: raw
    <KMenu v-model="currItem" :items="items" weight="strong" stacked numbered class="not-content" />
    <pre> {{ currItem }} </pre>
-   :::
+:::
 
 This page demonstrates usage of some of the runtime APIs provided by VitePress.
 
