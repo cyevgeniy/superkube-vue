@@ -3,13 +3,20 @@ title: KSelect
 description: A component for selecting a single option from a list
 ---
 
+
+<script setup>
 import KSelectDemo from './KSelectDemo.vue';
-import '../../../palette.css';
+import '../src/palette.css';
+</script>
+
+# KSelect
 
 Renders a select input.
 Under the hood, it wraps a `<select>` element.
 
+::: raw
 <KSelectDemo />
+:::
 
 
 ```typescript
@@ -85,7 +92,7 @@ When true, prevents user interaction with the select.
 ### `state`
 
 Applies visual styling to indicate validation state.
-Possible values are `'neutral'`, `'success'` and `'error'`: 
+Possible values are `'neutral'`, `'success'` and `'error'`:
 
 ```vue
 <KSelect ... state="success" />
@@ -102,11 +109,11 @@ Applies rounded corners to the select input.
 ### `size`
 
 Controls the size of the select input.
-Possible values are `'small'`, `'regular'` and `'large'`: 
+Possible values are `'small'`, `'regular'` and `'large'`:
 
 ```vue
 <KSelect ... size="small" />
-``` 
+```
 
 ### `light`
 
@@ -134,8 +141,8 @@ Helper text displayed below the select input.
 
 ### `hintPosition`
 
-Controls the position of the hint text. 
-Possible values are `'top'` and `'bottom'` (default): 
+Controls the position of the hint text.
+Possible values are `'top'` and `'bottom'` (default):
 
 ```vue
 <KSelect ... hintPosition="bottom" />
@@ -178,6 +185,3 @@ const emit = defineEmits<{
   (e: 'change', value: any): void
 }>()
 ```
-
-
-

@@ -3,15 +3,21 @@ title: KSwitch
 description: A switch button
 ---
 
+# KSwitch
+
+<script setup>
 import ComponentExample from './ComponentExample.vue';
-import KSwitch from '../../../components/KSwitch.vue';
-import '../../../palette.css';
+import KSwitch from '../src/components/KSwitch.vue';
+import '../src/palette.css';
+</script>
 
 A switch button.
 
+::: raw
 <ComponentExample>
   <KSwitch label="Alarm" />
 </ComponentExample>
+:::
 
 ```ts
 interface KSwitchProps {
@@ -49,4 +55,3 @@ A text label for the button. Optional.
 ### `:disabled`
 
 Disables the button if true.
-

@@ -20,6 +20,8 @@ export default defineConfig({
           { text: 'KDivider', link: '/KDivider' },
           { text: 'KLabel', link: '/KLabel' },
           { text: 'KTextField', link: '/KTextField' },
+          { text: 'KSwitch', link: '/KSwitch' },
+          { text: 'KSelect', link: '/KSelect' },
         ],
       },
     ],

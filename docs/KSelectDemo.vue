@@ -1,6 +1,6 @@
 <script setup>
 import ComponentExample from './ComponentExample.vue'
-import KSelect from '../../../components/KSelect.vue'
+import KSelect from '../src/components/KSelect.vue'
 
 const options = [
   { label: 'Tokyo', value: 'tokyo' },
