@@ -5,6 +5,7 @@ export default defineConfig({
   title: 'Superkube-vue',
   description: 'A Vue component library based on Superkube CSS',
   themeConfig: {
+    logo: '/logo.png',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },

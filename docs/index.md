@@ -5,6 +5,8 @@ layout: home
 hero:
   name: "Superkube-vue"
   text: "A Vue component library based on Superkube CSS"
+  image:
+    src: /logo.png
   tagline:
   actions:
     - theme: brand
