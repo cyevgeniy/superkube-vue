@@ -2,13 +2,18 @@
 title: KMenu
 description: A menu list
 ---
+<script setup>
 import KMenuDemo from './KMenuDemo.vue'
-import '../../../palette.css'
+import '../src/palette.css'
+</script>
 
+# KMenu
 
 A menu list component.
 
+::: raw
 <KMenuDemo />
+:::
 
 ```typescript
 

@@ -1,6 +1,6 @@
 <script setup>
 import ComponentExample from './ComponentExample.vue'
-import KMenu from '../../../components/KMenu.vue'
+import KMenu from '../src/components/KMenu.vue'
 
 const items = [
   { text: 'Tokyo', note: { text: 'test', color: 'primary' } },

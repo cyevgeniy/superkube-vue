@@ -3,14 +3,20 @@ title: KList
 description: A list component for static items
 ---
 
+<script setup>
 import ComponentExample from './ComponentExample.vue'
 import KListDemo from './KListDemo.vue'
-import '../../../palette.css'
+import '../src/palette.css'
+</script>
+
+# KList
 
 A list component that is used to display a static list of items.
 It can display both simple strings and complex objects as list items.
 
+::: raw
 <KListDemo />
+:::
 
 ```typescript
 type KListItem = Record<string, any> | string
@@ -43,7 +49,7 @@ An array of items to display in the list. Items can be strings or objects.
 <KList :items="['Apple', 'Banana', 'Orange']" />
 
 <!-- With objects -->
-<KList 
+<KList
   :items="[
     { label: 'Apple', id: 1 },
     { label: 'Banana', id: 2 },
@@ -59,7 +65,7 @@ When using objects as items, specifies which field to use as the display text.
 By default, the `labelField` is `'name'`.
 
 ```vue
-<KList 
+<KList
   :items="[{ name: 'John' }, { name: 'Jane' }]"
   labelField="name"
 />
@@ -113,8 +119,8 @@ Controls the list item marker style.
 Possible values: `'unstyled'`, `'checkmark'`, `'dashed'`, `'numbered'`
 
 ```vue
-<KList 
-  :items="['Task 1', 'Task 2']" 
-  markType="checkmark" 
+<KList
+  :items="['Task 1', 'Task 2']"
+  markType="checkmark"
 />
 ```
