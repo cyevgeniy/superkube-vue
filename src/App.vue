@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import Button from './components/Button.vue'
-</script>
-
 <template>
-  <Button label="test"></Button>
+  <h1>Superkuve-vue</h1>
 </template>
-

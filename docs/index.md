@@ -4,12 +4,12 @@ layout: home
 
 hero:
   name: "Superkube-vue"
-  text: "A Vue 3 component library based on Superkube CSS framework"
+  text: "A Vue component library based on Superkube CSS"
   tagline: My great project tagline
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Getting started
+      link: /getting-started
     - theme: alt
       text: API Examples
       link: /api-examples
@@ -19,7 +19,5 @@ features:
     details: Superkube is a SCSS framework with systematic design in mind
   - title: Light and Dark modes
     details: Dark mode is applied automatically depending on system preferences
-  - title: Open-source
-    details: Source code is available on [github](https://github.com/cyevgeniy/superkube-vue)
 ---
 
