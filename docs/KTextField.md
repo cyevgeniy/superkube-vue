@@ -2,9 +2,12 @@
 title: KTextField
 description: A text input component
 ---
-
+<script setup>
 import KTextFieldDemo from './KTextFieldDemo.vue'
-import '../../../palette.css'
+import '../src/palette.css'
+</script>
+
+# KTextField
 
 A flexible text input component that supports various states, sizes, and customization options through slots.
 
@@ -83,7 +86,7 @@ Default value is 'neutral'.
 Applies validation state styling to the input.
 
 ```vue
-<KTextField 
+<KTextField
   state="error"
   hint="Please enter a valid email"
 />

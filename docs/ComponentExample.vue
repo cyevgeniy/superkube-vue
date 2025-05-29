@@ -6,9 +6,13 @@ const props = defineProps({
     type: Boolean,
     required: false,
   },
+  column: {
+    type: Boolean,
+    required: false,
+  },
 })
 
-const classes = computed(() => (props.flex ? 'flex' : undefined))
+const classes = computed(() => [props.flex && 'flex', props.column && 'column'])
 </script>
 
 <template>
@@ -29,5 +33,9 @@ const classes = computed(() => (props.flex ? 'flex' : undefined))
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.example.flex.column {
+  flex-direction: column;
 }
 </style>

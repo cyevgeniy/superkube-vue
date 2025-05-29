@@ -2,12 +2,18 @@
 title: KBreadcrumb
 ---
 
+<script setup>
 import KBreadcrumbDemo from './KBreadcrumbDemo.vue';
-import '../../../palette.css';
+import '../src/palette.css';
+</script>
+
+# KBreadcrumb
 
 Shows breadcrumbs.
 
+::: raw
 <KBreadcrumbDemo />
+:::
 
 ```ts
 interface KBreadcrumbItem {

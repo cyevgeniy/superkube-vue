@@ -3,9 +3,13 @@ title: KAlert
 description: An alert block
 ---
 
+<script setup>
 import ComponentExample from './ComponentExample.vue';
-import KAlert from '../../../components/KAlert.vue';
-import '../../../palette.css';
+import KAlert from '../src/components/KAlert.vue';
+import '../src/palette.css';
+</script>
+
+# KAlert
 
 An information alert.
 
@@ -17,14 +21,16 @@ interface KAlertProps {
 }
 ```
 
-<ComponentExample>
-  <KAlert close class="not-content" type="info">
-    <h3>New version is arrived</h3>
+::: raw
+<ComponentExample flex>
+  <KAlert v-for="type in ['default' ,'info', 'success' ,'error']" :key="type" close :type="type">
+    <h3>Type: {{ type }}</h3>
     <p>
       To read about all new features, check out <a href="#">documentation</a>.
     </p>
   </KAlert>
 </ComponentExample>
+:::
 
 ## Basic usage
 

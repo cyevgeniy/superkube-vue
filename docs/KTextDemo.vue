@@ -1,6 +1,6 @@
 <script setup>
 import ComponentExample from './ComponentExample.vue'
-import KText from '../../../components/KText.vue'
+import KText from '../src/components/KText.vue'
 
 const colors = [
   'default',

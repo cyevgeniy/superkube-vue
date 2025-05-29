@@ -2,14 +2,21 @@
 title: KText
 description: A component for text rendering
 ---
+<script setup>
 import KTextDemo from './KTextDemo.vue'
-import '../../../palette.css'
+import '../src/palette.css'
+</script>
 
 
 
-<KTextDemo />
+
+# KText
 
 Renders text.
+
+::: raw
+<KTextDemo />
+:::
 
 Props:
 
@@ -81,4 +88,3 @@ When set to `true`, uses a monospace font family.
 ### `nowrap`
 
 When set to `true`, prevents text from wrapping to multiple lines.
-

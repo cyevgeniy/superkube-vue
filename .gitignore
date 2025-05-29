@@ -25,4 +25,5 @@ dist-ssr
 *.sw?
 
 # generated types
-.astro/
+docs/.vitepress/dist
+docs/.vitepress/cache
