@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Superkube-vue',
   description: 'A Vue component library based on Superkube CSS',
+  base: '/superkube-vue/',
   themeConfig: {
     logo: '/logo.png',
     // https://vitepress.dev/reference/default-theme-config
