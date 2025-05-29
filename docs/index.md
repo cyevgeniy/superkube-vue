@@ -5,14 +5,11 @@ layout: home
 hero:
   name: "Superkube-vue"
   text: "A Vue component library based on Superkube CSS"
-  tagline: My great project tagline
+  tagline:
   actions:
     - theme: brand
       text: Getting started
       link: /getting-started
-    - theme: alt
-      text: API Examples
-      link: /api-examples
 
 features:
   - title: Built on top of Superkube
