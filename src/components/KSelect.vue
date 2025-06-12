@@ -26,12 +26,12 @@ export interface KSelectProps {
 }
 
 const props = withDefaults(defineProps<KSelectProps>(), {
-  options: () => []
+  options: () => [],
 })
 
 const value = computed({
   get: () => props.modelValue,
-  set: (value) => emit('update:modelValue', value)
+  set: (value) => emit('update:modelValue', value),
 })
 
 const emit = defineEmits<{
@@ -47,13 +47,7 @@ function onChange(e: Event) {
   emit('change', v)
 }
 
-const classes = computed(() => [
-  props.size,
-  props.state,
-  props.light && 'light',
-  props.rounded && 'round'
-])
-
+const classes = computed(() => [props.size, props.state, props.light && 'light', props.rounded && 'round'])
 
 function isSelected(option: KSelectOption) {
   return value.value === option.value
@@ -61,34 +55,29 @@ function isSelected(option: KSelectOption) {
 </script>
 
 <template>
-    <KBaseInput :label="label" :light="props.light" :state="state" :hint-position="hintPosition" :hint="hint"
-    :required="required">
-    <select
-      class="input" 
-      :class="classes" 
-      :disabled="disabled" 
-      data-testid="selectInput" 
-      @change="onChange"
-    >
-      <option 
-        v-for="(option, idx) in options" 
-        :key="option.value" 
-        :value="idx" 
+  <KBaseInput
+    :label="label"
+    :light="props.light"
+    :state="state"
+    :hint-position="hintPosition"
+    :hint="hint"
+    :required="required"
+  >
+    <select class="input" :class="classes" :disabled="disabled" data-testid="selectInput" @change="onChange">
+      <option
+        v-for="(option, idx) in options"
+        :key="option.value"
+        :value="idx"
         :disabled="option.disabled"
         :selected="isSelected(option)"
       >
         {{ option.label }}
       </option>
-      <option
-        v-if="allowEmpty" 
-        :value="null"
-        :selected="value === null"
-      >
+      <option v-if="allowEmpty" :value="null" :selected="value === null">
         {{ placeholder }}
       </option>
     </select>
   </KBaseInput>
-
 </template>
 
 <style lang="css" scoped>
@@ -150,8 +139,8 @@ function isSelected(option: KSelectOption) {
   outline-offset: var(--input-outline-offset);
 }
 
-.input[type=radio],
-.input[type=checkbox] {
+.input[type='radio'],
+.input[type='checkbox'] {
   outline: 2px solid var(--input-outline-color);
 }
 
@@ -226,8 +215,7 @@ select.input {
   padding-right: 28px !important;
 }
 
-
-@media (prefers-color-scheme: dark) {
+.dark {
   select.input {
     --input-select-toggle: url('data:image/svg+xml;utf8,<svg height="6" viewBox="0 0 10 6" width="10" xmlns="http://www.w3.org/2000/svg"><path fill="rgb(255,255,255)" opacity=".7" d="m6.6168815 3-4.44908109-4.09883609c-.22373388-.20615371-.22373388-.54039492 0-.74654863s.58647818-.20615371.81021206 0l4.85418712 4.47211041c.22373388.20615371.22373388.54039491 0 .74654862l-4.85418712 4.47211041c-.22373388.20615371-.58647818.20615371-.81021206 0s-.22373388-.54039492 0-.74654863z" fill-rule="evenodd" transform="matrix(0 1 -1 0 8 -2)"/></svg>');
   }

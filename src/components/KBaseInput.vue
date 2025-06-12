@@ -151,7 +151,7 @@ label {
   background-color: var(--form-label-background-color);
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
   .hint {
     --hint-color: var(--palette-white-50);
   }
@@ -193,7 +193,7 @@ label {
   border-color: var(--input-addon-border-color);
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
   .input-addon {
     --input-addon-color: var(--palette-white-60);
     --input-addon-background-color: var(--palette-white-10);

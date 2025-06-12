@@ -281,7 +281,7 @@ const classes = computed(() => [
   --button-border-radius: 99px;
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
   .button {
     --button-background-color: transparent;
     --button-border-color: var(--palette-white-40);

@@ -52,7 +52,7 @@ const classes = computed(() => [
     numbered: props.numbered,
     'numbered-right': props.numbersPosition === 'right',
     pills: props.pills,
-  }
+  },
 ])
 
 function itemClasses(item: MenuItem) {
@@ -64,8 +64,7 @@ function itemClasses(item: MenuItem) {
 function handleItemClick(item: MenuItem) {
   emit('click', item)
 
-  if (_value.value !== undefined)
-    emit('update:modelValue', item)
+  if (_value.value !== undefined) emit('update:modelValue', item)
 }
 
 function isActive(item: MenuItem) {
@@ -77,17 +76,17 @@ function isActive(item: MenuItem) {
     <ul class="menu-list">
       <li v-for="item in items" :key="item.text" class="menu-item" data-testid="menu-item" :class="itemClasses(item)">
         <KWrapper :is="item.label ? 'div' : undefined" class="menu-link-box">
-            <KLink
-              class="menu-link"
-              :class="{'flex-none': item.label}"
-              @click="handleItemClick(item)"
-              :href="item.href"
-              data-testid="menu-link"
-            >
-              {{ item.text }}
-            </KLink>
-            <KLabel v-if="item.label" v-bind="item.label" style="margin-left: 10px;" />
-            <KText v-if="item.note" data-testid="menu-note" v-bind="item.note"> {{ item.note.text }} </KText>
+          <KLink
+            class="menu-link"
+            :class="{ 'flex-none': item.label }"
+            @click="handleItemClick(item)"
+            :href="item.href"
+            data-testid="menu-link"
+          >
+            {{ item.text }}
+          </KLink>
+          <KLabel v-if="item.label" v-bind="item.label" style="margin-left: 10px" />
+          <KText v-if="item.note" data-testid="menu-note" v-bind="item.note"> {{ item.note.text }} </KText>
         </KWrapper>
       </li>
     </ul>
@@ -169,9 +168,9 @@ function isActive(item: MenuItem) {
   margin-left: 0;
 }
 
-.menu .menu-list+h4,
-.menu .menu-list+h5,
-.menu .menu-list+h6 {
+.menu .menu-list + h4,
+.menu .menu-list + h5,
+.menu .menu-list + h6 {
   margin-top: 5rem;
 }
 
@@ -313,7 +312,7 @@ function isActive(item: MenuItem) {
   text-align: right;
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
   .menu {
     --menu-link-color: var(--palette-white-90);
     --menu-link-background-color: transparent;
@@ -361,26 +360,26 @@ function isActive(item: MenuItem) {
 }
 
 a {
-    color: var(--link-default-color);
-  }
-  
-  a:hover {
-    transition: all 0.1s linear;
-    color: var(--link-default-hover-color);
-  }
+  color: var(--link-default-color);
+}
 
-  nav ul,
-  nav ol {
-    margin-left: 0;
-    list-style: none;
-  }
+a:hover {
+  transition: all 0.1s linear;
+  color: var(--link-default-hover-color);
+}
 
-  ul,
-  ol {
-    margin-left: 20px;
-  }
-  
-  li li {
-    font-size: 1em;
-  }
+nav ul,
+nav ol {
+  margin-left: 0;
+  list-style: none;
+}
+
+ul,
+ol {
+  margin-left: 20px;
+}
+
+li li {
+  font-size: 1em;
+}
 </style>

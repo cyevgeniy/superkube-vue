@@ -105,7 +105,7 @@ const classes = computed(() => [props.disabled && 'disabled'])
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 
-@media and (prefers-color-scheme: dark) {
+.dark {
   .toggle {
     --toggle-background-color: var(--palette-neutral-mid);
     --toggle-active-background-color: var(--palette-active-mid);

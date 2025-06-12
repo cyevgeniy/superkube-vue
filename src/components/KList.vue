@@ -231,7 +231,7 @@ const classes = computed(() => [
   color: var(--list-number-color);
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
   .list.light {
     --list-item-color: var(--palette-white-90);
   }

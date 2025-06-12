@@ -205,7 +205,7 @@ function onFocus(e: FocusEvent) {
   --input-focus-outline-color: var(--palette-positive-base);
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
   .input {
     --input-color: var(--palette-white-90);
     --input-border-color: var(--palette-white-30);

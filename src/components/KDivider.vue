@@ -89,7 +89,7 @@ const classes = computed(() => [
   --divider-color: var(--palette-white-30);
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
   .divider.default {
     --divider-color: var(--palette-white-20);
   }

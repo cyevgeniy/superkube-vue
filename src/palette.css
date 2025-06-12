@@ -108,8 +108,7 @@
     --palette-black-95: rgba(3, 6, 18, 0.95);
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
+.dark {
       --palette-surface-base: #202124;
       --palette-surface-100: #3F4345;
       --palette-surface-200: #383B3D;
@@ -157,7 +156,6 @@
       --palette-black-80: rgba(23, 23, 24, 0.8);
       --palette-black-90: rgba(23, 23, 24, 0.9);
       --palette-black-95: rgba(23, 23, 24, 0.95);
-    }
 }
 
 
@@ -273,8 +271,7 @@
     --shadow-350: 0 50px 100px -10px var(--palette-black-20), 0 30px 60px -30px var(--palette-black-30);
   }
   
-  @media (prefers-color-scheme: dark) {
-    :root {
+  .dark {
       --background-light: var(--palette-white-7);
       --background-dark: var(--palette-black);
       --background-primary: var(--palette-primary-mid);
@@ -348,7 +345,6 @@
       --shadow-250: none;
       --shadow-300: none;
       --shadow-350: none;
-    }
   }
 
   html {

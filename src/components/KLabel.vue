@@ -1,38 +1,35 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import KClose from './KClose.vue';
+import { computed } from 'vue'
+import KClose from './KClose.vue'
 
 export interface KLabelProps {
-    label: string
-    mode?: 'base' | 'dark' | 'light'
-    withClose?: boolean
-    href?: string
+  label: string
+  mode?: 'base' | 'dark' | 'light'
+  withClose?: boolean
+  href?: string
 }
 
 const emit = defineEmits<{
-    (evt: 'close'): void
+  (evt: 'close'): void
 }>()
 
 const props = defineProps<KLabelProps>()
 
 function handleClose() {
-    emit('close')
+  emit('close')
 }
 
-const classes = computed(() => [
-    props.mode
-])
-
+const classes = computed(() => [props.mode])
 </script>
 
 <template>
-    <span class="label" :class="classes" data-testid="label">
-        <a v-if="href" :href="href" target="_blank">{{ label}}</a>
-        <template v-else>
-            {{ label }}
-        </template>
-        <KClose v-if="withClose" @click="handleClose" />
-    </span> 
+  <span class="label" :class="classes" data-testid="label">
+    <a v-if="href" :href="href" target="_blank">{{ label }}</a>
+    <template v-else>
+      {{ label }}
+    </template>
+    <KClose v-if="withClose" @click="handleClose" />
+  </span>
 </template>
 
 <style scoped>
@@ -98,7 +95,7 @@ a.label:hover {
   --label-color: var(--palette-black);
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
   .label {
     --label-background-color: var(--palette-neutral-lighter);
     --label-border-color: transparent;

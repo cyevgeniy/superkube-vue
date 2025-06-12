@@ -20,19 +20,17 @@ const classes = computed(() => [
   props.type || 'default',
   {
     light: props.light,
-
   },
 ])
 </script>
 
-
 <template>
   <nav class="breadcrumb" :class="classes">
-      <ul class="breadcrumb-list">
-        <li v-for="(item, index) in items" class="breadcrumb-item" :class="{active: index === (items.length - 1)}">
-          <KLink :href="item.href" class="breadcrumb-link">{{ item.text }}</KLink>
-        </li>
-      </ul>
+    <ul class="breadcrumb-list">
+      <li v-for="(item, index) in items" class="breadcrumb-item" :class="{ active: index === items!.length - 1 }">
+        <KLink :href="item.href" class="breadcrumb-link">{{ item.text }}</KLink>
+      </li>
+    </ul>
   </nav>
 </template>
 
@@ -45,7 +43,7 @@ const classes = computed(() => [
   --breadcrumb-font-size: var(--type-scale-14);
   --breadcrumb-line-height: var(--body-text-line);
   --breadcrumb-item-space: 1rem;
-  --breadcrumb-separator: "/";
+  --breadcrumb-separator: '/';
   font-size: var(--breadcrumb-font-size);
   line-height: var(--breadcrumb-line-height);
 }
@@ -91,14 +89,14 @@ const classes = computed(() => [
 }
 
 .breadcrumb.bullet {
-  --breadcrumb-separator: "∙";
+  --breadcrumb-separator: '∙';
 }
 
 .breadcrumb.path {
-  --breadcrumb-separator: "≻";
+  --breadcrumb-separator: '≻';
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
   .breadcrumb {
     --breadcrumb-link-color: var(--palette-white-90);
     --breadcrumb-link-hover-color: var(--palette-white);

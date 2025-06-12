@@ -1,9 +1,19 @@
 <script setup lang="ts">
-import  { computed } from 'vue'
+import { computed } from 'vue'
 
 export interface KTextProps {
   is?: string
-  color?: 'default' | 'primary' | 'dark' | 'dark-mid' | 'muted' | 'success' | 'error' | 'light' | 'light-mid' | 'light-muted'
+  color?:
+    | 'default'
+    | 'primary'
+    | 'dark'
+    | 'dark-mid'
+    | 'muted'
+    | 'success'
+    | 'error'
+    | 'light'
+    | 'light-mid'
+    | 'light-muted'
   size?: 'micro' | 'small' | 'medium' | 'default' | 'large' | 'huge' | 'mega'
   weight?: 'default' | 'semibold' | 'strong'
   italic?: boolean
@@ -19,23 +29,18 @@ const classes = computed(() => [
   props.size || '',
   props.weight || '',
   {
-    'italic': props.italic,
-    'caps': props.caps,
-    'mono': props.mono,
-    'nowrap': props.nowrap,
-  }
+    italic: props.italic,
+    caps: props.caps,
+    mono: props.mono,
+    nowrap: props.nowrap,
+  },
 ])
 
 const is = computed(() => props.is || 'p')
 </script>
 
-
 <template>
-  <component
-    class="text"
-    :is="is"
-    :class="classes"
-  >
+  <component class="text" :is="is" :class="classes">
     <slot />
   </component>
 </template>
@@ -62,7 +67,9 @@ const is = computed(() => props.is || 'p')
   letter-spacing: 0.035em;
 }
 
-.text.nowrap, .text.nowrap :deep(td), .text.nowrap :deep(th) {
+.text.nowrap,
+.text.nowrap :deep(td),
+.text.nowrap :deep(th) {
   white-space: nowrap;
 }
 
@@ -75,7 +82,7 @@ const is = computed(() => props.is || 'p')
   color: var(--text-color);
 }
 
-.text.mega{
+.text.mega {
   --text-font-size: 24px;
   --text-line-height: 1.5;
 }
@@ -144,7 +151,7 @@ const is = computed(() => props.is || 'p')
   --text-color: var(--palette-primary-base);
 }
 
-@media (prefers-color-scheme: dark) {
+.dark {
   .text.dark {
     --text-color: var(--palette-white-95);
   }
@@ -176,5 +183,4 @@ const is = computed(() => props.is || 'p')
     --text-color: var(--palette-primary-light);
   }
 }
-
 </style>
