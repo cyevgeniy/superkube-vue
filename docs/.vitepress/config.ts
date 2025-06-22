@@ -28,6 +28,7 @@ export default defineConfig({
           { text: 'KMenu', link: '/KMenu' },
           { text: 'KText', link: '/KText' },
           { text: 'KButton', link: '/KButton' },
+          { text: 'KCard', link: '/KCard' },
         ],
       },
     ],
