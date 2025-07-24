@@ -22,11 +22,26 @@ const value = computed({
   },
 })
 
+function onKeyDown(e: KeyboardEvent) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault()
+    value.value = !value.value
+  }
+}
+
 const classes = computed(() => [props.disabled && 'disabled'])
 </script>
 
 <template>
-  <label class="toggle" :class="classes" data-testid="toggle">
+  <label
+    tabindex="0"
+    class="toggle"
+    :aria-checked="value"
+    :class="classes"
+    data-testid="toggle"
+    role="switch"
+    @keydown="onKeyDown"
+  >
     <input class="toggle-checkbox" type="checkbox" :disabled="disabled" v-model="value" />
     <div class="toggle-toggle"></div>
     <span class="toggle-label">{{ label }}</span>
@@ -55,16 +70,20 @@ const classes = computed(() => [props.disabled && 'disabled'])
   cursor: pointer;
   display: inline-block;
 }
+
 .toggle .toggle-checkbox {
   position: absolute;
   visibility: hidden;
 }
+
 .toggle .toggle-checkbox:checked + .toggle-toggle {
   background-color: var(--toggle-active-background-color);
 }
+
 .toggle .toggle-checkbox:checked + .toggle-toggle:before {
   left: 50%;
 }
+
 .toggle .toggle-label {
   position: relative;
   font-weight: var(--toggle-label-font-weight);
@@ -75,6 +94,7 @@ const classes = computed(() => [props.disabled && 'disabled'])
   margin-left: var(--toggle-label-margin-left);
   color: var(--toggle-label-color);
 }
+
 .toggle .toggle-toggle {
   position: relative;
   display: inline-block;
@@ -85,10 +105,12 @@ const classes = computed(() => [props.disabled && 'disabled'])
   height: var(--toggle-height);
   background-color: var(--toggle-background-color);
 }
+
 .toggle .toggle-toggle:before,
 .toggle .toggle-toggle:after {
   content: '';
 }
+
 .toggle .toggle-toggle:before {
   position: absolute;
   display: block;
@@ -101,6 +123,7 @@ const classes = computed(() => [props.disabled && 'disabled'])
   left: var(--toggle-space);
   background-color: var(--toggle-handle-background-color);
 }
+
 .toggle:hover .toggle-toggle:before {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
 }

@@ -6,17 +6,13 @@ description: A switch button
 # KSwitch
 
 <script setup>
-import ComponentExample from './ComponentExample.vue';
-import KSwitch from '../src/components/KSwitch.vue';
-import '../src/palette.css';
+import KSwitchDemo from './KSwitchDemo.vue';
 </script>
 
 A switch button.
 
 ::: raw
-<ComponentExample>
-  <KSwitch label="Alarm" />
-</ComponentExample>
+<KSwitchDemo />
 :::
 
 ```ts
