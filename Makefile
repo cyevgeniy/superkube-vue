@@ -21,7 +21,4 @@ ssh:
 	ssh superkube-vue.devpod
 
 docs-dev:
-	npx astro dev
-
-docs-build:
-	npx astro build
+	npx vitepress dev docs
