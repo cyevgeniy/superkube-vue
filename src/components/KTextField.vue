@@ -137,8 +137,7 @@ function onFocus(e: FocusEvent) {
   outline-offset: var(--input-outline-offset);
 }
 
-.input[type='radio'],
-.input[type='checkbox'] {
+.input[type='radio'] {
   outline: 2px solid var(--input-outline-color);
 }
 

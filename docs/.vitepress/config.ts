@@ -29,6 +29,7 @@ export default defineConfig({
           { text: 'KText', link: '/KText' },
           { text: 'KButton', link: '/KButton' },
           { text: 'KCard', link: '/KCard' },
+          { text: 'KCheckbox', link: '/KCheckbox' },
         ],
       },
     ],
