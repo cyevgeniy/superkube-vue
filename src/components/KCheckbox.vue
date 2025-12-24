@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import KBaseInput, { type KInputSize, type State } from './KBaseInput.vue'
 
 export type KCheckboxState = State
@@ -40,7 +40,6 @@ function onChange(e: Event) {
       {{ label }}
     </label>
   </KBaseInput>
-  <pre>{{ _value }}</pre>
 </template>
 
 <style scoped>
