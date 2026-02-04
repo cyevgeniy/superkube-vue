@@ -14,7 +14,6 @@ interface Option {
 interface Props {
   modelValue?: Value[]
   options: Option[]
-  hint?: string
   size?: KInputSize
   disabled?: boolean
 }
