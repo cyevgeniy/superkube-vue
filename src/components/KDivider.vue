@@ -26,7 +26,10 @@ const classes = computed(() => [
 </script>
 
 <template>
-  <div class="divider" :class="classes" />
+  <div
+    class="divider"
+    :class="classes"
+  />
 </template>
 
 <style scoped>

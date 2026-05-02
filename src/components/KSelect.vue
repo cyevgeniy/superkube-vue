@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import type { HintPosition, KInputSize, State } from './KBaseInput.vue'
 import { computed } from 'vue'
-import type { State, HintPosition, KInputSize } from './KBaseInput.vue'
 import KBaseInput from './KBaseInput.vue'
 
 export interface KSelectOption {
@@ -29,15 +29,15 @@ const props = withDefaults(defineProps<KSelectProps>(), {
   options: () => [],
 })
 
-const value = computed({
-  get: () => props.modelValue,
-  set: (value) => emit('update:modelValue', value),
-})
-
 const emit = defineEmits<{
   (e: 'update:modelValue', value: any): void
   (e: 'change', value: any): void
 }>()
+
+const value = computed({
+  get: () => props.modelValue,
+  set: value => emit('update:modelValue', value),
+})
 
 function onChange(e: Event) {
   const target = e.target as HTMLInputElement
@@ -63,7 +63,13 @@ function isSelected(option: KSelectOption) {
     :hint="hint"
     :required="required"
   >
-    <select class="input" :class="classes" :disabled="disabled" data-testid="selectInput" @change="onChange">
+    <select
+      class="input"
+      :class="classes"
+      :disabled="disabled"
+      data-testid="selectInput"
+      @change="onChange"
+    >
       <option
         v-for="(option, idx) in options"
         :key="option.value"
@@ -73,7 +79,11 @@ function isSelected(option: KSelectOption) {
       >
         {{ option.label }}
       </option>
-      <option v-if="allowEmpty" :value="null" :selected="value === null">
+      <option
+        v-if="allowEmpty"
+        :value="null"
+        :selected="value === null"
+      >
         {{ placeholder }}
       </option>
     </select>

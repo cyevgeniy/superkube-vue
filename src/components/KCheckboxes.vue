@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import type { KInputSize } from './KBaseInput.vue'
+import { computed } from 'vue'
 import KCheckbox from './KCheckbox.vue'
 
 type Value = string | number
@@ -33,21 +33,22 @@ function isChecked(v: Value) {
 function setValue(index: number) {
   const v = props.options[index].value
 
-  const res = _value.value.filter((value) => value !== v).concat(_value.value.includes(v) ? [] : [v])
+  const res = _value.value.filter(value => value !== v).concat(_value.value.includes(v) ? [] : [v])
 
   emit('update:modelValue', res)
 }
 </script>
+
 <template>
   <div class="checkboxes">
     <KCheckbox
       v-for="(option, index) in options"
-      :model-value="isChecked(option.value)"
-      @update:model-value="setValue(index)"
       :key="index"
+      :model-value="isChecked(option.value)"
       :label="option.label"
       :size="size"
       :disabled="option.disabled || disabled"
+      @update:model-value="setValue(index)"
     />
   </div>
 </template>

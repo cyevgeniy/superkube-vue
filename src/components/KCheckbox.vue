@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import type { KInputSize, State } from './KBaseInput.vue'
 import { computed } from 'vue'
-import KBaseInput, { type KInputSize, type State } from './KBaseInput.vue'
+import KBaseInput from './KBaseInput.vue'
 
 export type KCheckboxState = State
 
@@ -28,15 +29,23 @@ function onChange(e: Event) {
 </script>
 
 <template>
-  <KBaseInput :hint="hint" hint-position="bottom" :state="state">
-    <label class="checkbox" :class="classes" data-test="checkboxLabel">
+  <KBaseInput
+    :hint="hint"
+    hint-position="bottom"
+    :state="state"
+  >
+    <label
+      class="checkbox"
+      :class="classes"
+      data-test="checkboxLabel"
+    >
       <input
         type="checkbox"
         :disabled="disabled"
         data-test="checkboxInput"
         :checked="!!modelValue"
         @change="onChange"
-      />
+      >
       {{ label }}
     </label>
   </KBaseInput>

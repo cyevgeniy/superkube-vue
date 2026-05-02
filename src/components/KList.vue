@@ -34,8 +34,16 @@ const classes = computed(() => [
 </script>
 
 <template>
-  <ul class="list" :class="classes" data-testid="list">
-    <li v-for="item in items" class="list-item" data-testid="list-item">
+  <ul
+    class="list"
+    :class="classes"
+    data-testid="list"
+  >
+    <li
+      v-for="item in items"
+      class="list-item"
+      data-testid="list-item"
+    >
       {{ getText(item) }}
     </li>
   </ul>

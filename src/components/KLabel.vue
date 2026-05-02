@@ -9,11 +9,11 @@ export interface KLabelProps {
   href?: string
 }
 
+const props = defineProps<KLabelProps>()
+
 const emit = defineEmits<{
   (evt: 'close'): void
 }>()
-
-const props = defineProps<KLabelProps>()
 
 function handleClose() {
   emit('close')
@@ -23,12 +23,23 @@ const classes = computed(() => [props.mode])
 </script>
 
 <template>
-  <span class="label" :class="classes" data-testid="label">
-    <a v-if="href" :href="href" target="_blank">{{ label }}</a>
+  <span
+    class="label"
+    :class="classes"
+    data-testid="label"
+  >
+    <a
+      v-if="href"
+      :href="href"
+      target="_blank"
+    >{{ label }}</a>
     <template v-else>
       {{ label }}
     </template>
-    <KClose v-if="withClose" @click="handleClose" />
+    <KClose
+      v-if="withClose"
+      @click="handleClose"
+    />
   </span>
 </template>
 

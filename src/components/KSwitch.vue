@@ -42,8 +42,13 @@ const classes = computed(() => [props.disabled && 'disabled'])
     role="switch"
     @keydown="onKeyDown"
   >
-    <input class="toggle-checkbox" type="checkbox" :disabled="disabled" v-model="value" />
-    <div class="toggle-toggle"></div>
+    <input
+      v-model="value"
+      class="toggle-checkbox"
+      type="checkbox"
+      :disabled="disabled"
+    >
+    <div class="toggle-toggle" />
     <span class="toggle-label">{{ label }}</span>
   </label>
 </template>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import KLabel from './KLabel.vue'
-import KWrapper from './KWrapper.vue'
 import type { KLabelProps } from './KLabel.vue'
 import type { KTextProps } from './KText.vue'
-import KText from './KText.vue'
+import { computed } from 'vue'
+import KLabel from './KLabel.vue'
 import KLink from './KLink.vue'
+import KText from './KText.vue'
+import KWrapper from './KWrapper.vue'
 
 export interface MenuText extends KTextProps {
   text: string
@@ -47,11 +47,11 @@ const classes = computed(() => [
   props.weight,
   props.size,
   {
-    underline: props.underline,
-    stacked: props.stacked,
-    numbered: props.numbered,
+    'underline': props.underline,
+    'stacked': props.stacked,
+    'numbered': props.numbered,
     'numbered-right': props.numbersPosition === 'right',
-    pills: props.pills,
+    'pills': props.pills,
   },
 ])
 
@@ -64,29 +64,54 @@ function itemClasses(item: MenuItem) {
 function handleItemClick(item: MenuItem) {
   emit('click', item)
 
-  if (_value.value !== undefined) emit('update:modelValue', item)
+  if (_value.value !== undefined)
+    emit('update:modelValue', item)
 }
 
 function isActive(item: MenuItem) {
   return _value.value ? _value.value.text === item.text : false
 }
 </script>
+
 <template>
-  <nav class="menu" :class="classes" data-testid="menu">
+  <nav
+    class="menu"
+    :class="classes"
+    data-testid="menu"
+  >
     <ul class="menu-list">
-      <li v-for="item in items" :key="item.text" class="menu-item" data-testid="menu-item" :class="itemClasses(item)">
-        <KWrapper :is="item.label ? 'div' : undefined" class="menu-link-box">
+      <li
+        v-for="item in items"
+        :key="item.text"
+        class="menu-item"
+        data-testid="menu-item"
+        :class="itemClasses(item)"
+      >
+        <KWrapper
+          :is="item.label ? 'div' : undefined"
+          class="menu-link-box"
+        >
           <KLink
             class="menu-link"
             :class="{ 'flex-none': item.label }"
-            @click="handleItemClick(item)"
             :href="item.href"
             data-testid="menu-link"
+            @click="handleItemClick(item)"
           >
             {{ item.text }}
           </KLink>
-          <KLabel v-if="item.label" v-bind="item.label" style="margin-left: 10px" />
-          <KText v-if="item.note" data-testid="menu-note" v-bind="item.note"> {{ item.note.text }} </KText>
+          <KLabel
+            v-if="item.label"
+            v-bind="item.label"
+            style="margin-left: 10px"
+          />
+          <KText
+            v-if="item.note"
+            data-testid="menu-note"
+            v-bind="item.note"
+          >
+            {{ item.note.text }}
+          </KText>
         </KWrapper>
       </li>
     </ul>

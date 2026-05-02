@@ -27,25 +27,50 @@ const hintClasses = computed(() => [props.state || 'neutral', props.light && 'li
 
 <template>
   <div data-testid="baseInput">
-    <label v-if="label" data-testid="inputLabel">
+    <label
+      v-if="label"
+      data-testid="inputLabel"
+    >
       {{ label }}
-      <span v-if="props.required" class="hint req" data-testid="reqHint">*</span>
-      <span v-if="showTopHint" class="hint" :class="hintClasses" data-testid="topHint">
+      <span
+        v-if="props.required"
+        class="hint req"
+        data-testid="reqHint"
+      >*</span>
+      <span
+        v-if="showTopHint"
+        class="hint"
+        :class="hintClasses"
+        data-testid="topHint"
+      >
         {{ hint }}
       </span>
     </label>
     <div class="input-group">
-      <span v-if="$slots.prependAddon" class="input-addon">
+      <span
+        v-if="$slots.prependAddon"
+        class="input-addon"
+      >
         <slot name="prependAddon" />
       </span>
 
       <slot />
 
-      <span v-if="$slots.appendAddon" class="input-addon">
+      <span
+        v-if="$slots.appendAddon"
+        class="input-addon"
+      >
         <slot name="appendAddon" />
       </span>
     </div>
-    <div v-if="showBottomHint" class="hint" :class="hintClasses" data-testid="bottomHint">{{ hint }}</div>
+    <div
+      v-if="showBottomHint"
+      class="hint"
+      :class="hintClasses"
+      data-testid="bottomHint"
+    >
+      {{ hint }}
+    </div>
   </div>
 </template>
 

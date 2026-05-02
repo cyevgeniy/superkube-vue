@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import type { KCloseSize } from './KClose.vue'
 import { computed } from 'vue'
-import KClose, { type KCloseSize } from './KClose.vue'
+import KClose from './KClose.vue'
 
 export interface KAlertProps {
   type?: 'default' | 'info' | 'success' | 'error'
@@ -22,8 +23,16 @@ function onClose() {
 </script>
 
 <template>
-  <div class="alert" :class="classes">
-    <KClose v-if="close" data-test="close" :size="closeSize" @click="onClose" />
+  <div
+    class="alert"
+    :class="classes"
+  >
+    <KClose
+      v-if="close"
+      data-test="close"
+      :size="closeSize"
+      @click="onClose"
+    />
     <slot />
   </div>
 </template>

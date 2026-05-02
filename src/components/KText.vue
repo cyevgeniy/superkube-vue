@@ -40,7 +40,11 @@ const is = computed(() => props.is || 'p')
 </script>
 
 <template>
-  <component class="text" :is="is" :class="classes">
+  <component
+    :is="is"
+    class="text"
+    :class="classes"
+  >
     <slot />
   </component>
 </template>

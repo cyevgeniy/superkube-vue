@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import type { HintPosition, KInputSize, State } from './KBaseInput.vue'
 import { computed } from 'vue'
 import KBaseInput from './KBaseInput.vue'
-import type { State, HintPosition, KInputSize } from './KBaseInput.vue'
 
 export type KTextFieldState = State
 
@@ -56,7 +56,10 @@ function onFocus(e: FocusEvent) {
     :hint="hint"
     :required="required"
   >
-    <template v-if="$slots.prependAddon" #prependAddon>
+    <template
+      v-if="$slots.prependAddon"
+      #prependAddon
+    >
       <slot name="prependAddon" />
     </template>
     <slot name="prependButton" />
@@ -71,9 +74,12 @@ function onFocus(e: FocusEvent) {
       data-testid="textInput"
       @blur="onBlur"
       @focus="onFocus"
-    />
-    <slot name="appendButton"> </slot>
-    <template v-if="$slots.appendAddon" #appendAddon>
+    >
+    <slot name="appendButton" />
+    <template
+      v-if="$slots.appendAddon"
+      #appendAddon
+    >
       <slot name="appendAddon" />
     </template>
   </KBaseInput>

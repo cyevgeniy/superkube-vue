@@ -1,24 +1,27 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
-export type KCloseSize =  'small' | 'medium' | 'base' | 'large' | 'huge'
+export type KCloseSize = 'small' | 'medium' | 'base' | 'large' | 'huge'
 
 export interface KCloseProps {
-    size?: KCloseSize
-    strong?: boolean
+  size?: KCloseSize
+  strong?: boolean
 }
 
 const props = defineProps<KCloseProps>()
 
 const classes = computed(() => [
-    { strong: !!props.strong },
-    props.size ?? 'base'
+  { strong: !!props.strong },
+  props.size ?? 'base',
 ])
-
 </script>
 
 <template>
-    <span class="close" :class="classes" data-testid="close" />
+  <span
+    class="close"
+    :class="classes"
+    data-testid="close"
+  />
 </template>
 
 <style scoped>

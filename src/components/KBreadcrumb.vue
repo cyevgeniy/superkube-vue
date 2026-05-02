@@ -25,10 +25,22 @@ const classes = computed(() => [
 </script>
 
 <template>
-  <nav class="breadcrumb" :class="classes">
+  <nav
+    class="breadcrumb"
+    :class="classes"
+  >
     <ul class="breadcrumb-list">
-      <li v-for="(item, index) in items" class="breadcrumb-item" :class="{ active: index === items!.length - 1 }">
-        <KLink :href="item.href" class="breadcrumb-link">{{ item.text }}</KLink>
+      <li
+        v-for="(item, index) in items"
+        class="breadcrumb-item"
+        :class="{ active: index === items!.length - 1 }"
+      >
+        <KLink
+          :href="item.href"
+          class="breadcrumb-link"
+        >
+          {{ item.text }}
+        </KLink>
       </li>
     </ul>
   </nav>

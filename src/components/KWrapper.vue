@@ -1,6 +1,6 @@
 <script lang="ts">
 export default {
-  inheritAttrs: false
+  inheritAttrs: false,
 }
 </script>
 
@@ -11,8 +11,12 @@ defineProps<{
 </script setup>
 
 <template>
-  <component v-if="is" :is="is" v-bind="$attrs">
+  <component
+    :is="is"
+    v-if="is"
+    v-bind="$attrs"
+  >
     <slot />
   </component>
-  <slot v-else/>
+  <slot v-else />
 </template>

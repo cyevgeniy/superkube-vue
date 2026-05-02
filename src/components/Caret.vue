@@ -10,19 +10,22 @@ export interface CaretProps {
 }
 
 const props = withDefaults(defineProps<CaretProps>(), {
-    direction: 'right',
-    size: 'auto',
+  direction: 'right',
+  size: 'auto',
 })
 
 const classes = computed(() => [
-        { 'strong': props.strong },
-        props.direction,
-        props.size,
+  { strong: props.strong },
+  props.direction,
+  props.size,
 ])
 </script>
 
 <template>
-  <span class="caret" :class="classes"/>
+  <span
+    class="caret"
+    :class="classes"
+  />
 </template>
 
 <style scoped>
